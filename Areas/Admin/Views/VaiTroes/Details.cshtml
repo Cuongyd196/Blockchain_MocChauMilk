@@ -1,0 +1,35 @@
+﻿@model Blockchain_MocChauMilk.Models.VaiTro
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VaiTro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VaiTro1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaiTro1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongTinKhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongTinKhoa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaVaitro }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

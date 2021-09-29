@@ -1,0 +1,67 @@
+﻿@model Blockchain_MocChauMilk.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+<br />
+<h2> Chi tiết người dùng</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VaiTro.VaiTro1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaiTro.VaiTro1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.SoE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoN)
+        </dd>*@
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNguoiDung }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

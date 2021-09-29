@@ -1,0 +1,58 @@
+﻿@model Blockchain_MocChauMilk.Models.NguoiDung
+
+@{
+    ViewBag.Title = "TaoKhoa";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutCoquan.cshtml";
+    var userAdmin = Session["userAdmin"] as Blockchain_MocChauMilk.Models.NguoiDung;
+
+}
+
+<h2>Tự động tạo bộ khóa RSA</h2>
+
+@using (Html.BeginForm("TaoKhoa", "TaoMoiRSA", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.MaNguoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaNguoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaNguoiDung, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    <div class="form-group">
+        <label class="control-label col-md-2" for="MaNguoiDung">Tạo khóa cho ID</label>
+        <div class="col-md-10">
+            <input readonly="true" class="form-control text-box single-line" data-val="true" data-val-length="The field MaNguoiDung must be a string with a maximum length of 10." data-val-length-max="10" id="MaNguoiDung" name="MaNguoiDung" type="text" value="@userAdmin.MaNguoiDung" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="MaNguoiDung" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="MaNguoiDung">Tài khoản</label>
+        <div class="col-md-10">
+            <input readonly="true" class="form-control text-box single-line" data-val="true" data-val-length="The field MaNguoiDung must be a string with a maximum length of 10." data-val-length-max="10" id="" name="" type="text" value="@userAdmin.TaiKhoan" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <center>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo khóa tự động" class="btn btn-primary" />
+            </div>
+        </center>
+    </div>
+    <h4>@ViewBag.thongbao</h4>
+    <br />
+    <h5>@ViewBag.d</h5>
+    <br />
+    <h4><span style="color:red"> @ViewBag.canthan</span></h4>
+    <h4><span style="color:red"> @ViewBag.loi</span></h4>
+
+
+</div>
+}
+

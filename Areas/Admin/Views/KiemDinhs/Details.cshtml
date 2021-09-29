@@ -1,0 +1,135 @@
+﻿@model Blockchain_MocChauMilk.Models.QuyTrinh
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutCoquan.cshtml";
+}
+
+<br />
+<center><h2>CHI TIẾT QUY TRÌNH</h2></center>
+<hr />
+<div class="row">
+    <hr />
+    <div class="col-md-5" style="float:left">
+        <dl>
+            <dt>
+                Tên quy trình
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenQuyTrinh)
+            </dd>
+
+            <dt>
+                Tên sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SanPham.TenSanPham)
+            </dd>
+            <dt>
+                Tên lô hàng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoHang.TenLoHang)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.NguoiDung.TaiKhoan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NguoiDung.TaiKhoan)
+            </dd>*@
+
+
+            <dt>
+                Hình ảnh sản phẩm
+            </dt>
+
+            <dd class="align-center">
+                <img src=@Model.SanPham.HinhAnh class="img-responsive" alt="" width="200" height="200" />
+
+            </dd>
+
+            <dt>
+                Mô tả quy trình
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MoTa)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.ChuKi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ChuKi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NgayKy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayKy)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrangThai)
+            </dd>*@
+
+            @*<dt>
+                Tệp tin chứng thực
+            </dt>
+
+            <dd>
+                <img src=@Model.TepTinChungThuc class="img-responsive" alt="" width="400" height="400" />
+            </dd>*@
+            <dt>
+                @*@Html.DisplayNameFor(model => model.TrangThai)*@
+                Trạng thái
+            </dt>
+
+            <dd>
+                @{
+                    if (Model.TrangThai == 0)
+                    {
+                        <div style="color:red">Đang chờ kiểm định</div>
+                    }
+                    else if (Model.TrangThai == 1)
+                    {
+                        <div style="color:slateblue">Đã kiểm định</div>
+
+                    }
+                }
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-7">
+        <b>Tệp tin chứng thực:</b>
+        <br />
+        <img src=@Model.TepTinChungThuc class="img-responsive" alt="" width="450" height="450" />
+    </div>
+
+</div>
+
+@{ 
+    if (Model.TrangThai == 0 || Model.TrangThai == 2)
+    {
+    <center>
+        <div style="margin-top:10px">
+            <br />
+            <button class="btn btn-danger">
+                @Html.ActionLink("Xác thực quy trình", "Edit", new { id = Model.MaQuyTrinh}, new { @style = "color:white;" })
+            </button>
+        </div>
+    </center>
+    }
+}

@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Blockchain_MocChauMilk.Models.QuyTrinh>
+@*@using Blockchain_MocChauMilk.Models
+@model QuyTrinh*@
+@{
+    ViewBag.Title = "XemChiTietSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<CENTER>
+    <div>
+        <h2>CHI TIẾT SẢN PHẨM</h2>
+        <img src=@ViewBag.AnhSP class="img-responsive" alt="" width="400" height="400" />
+        <br />
+        <h3> @ViewBag.TenSP</h3>
+        <br />
+        @{
+            if (@ViewBag.TrangThaiSP == 1)
+            {
+                <h2 style="color:red">SẢN PHẨM ĐÃ ĐƯỢC KIỂM ĐỊNH</h2>
+            }
+            else
+            {
+                <h2 style="color:red">SẢN PHẨM CHƯA ĐƯỢC KIỂM ĐỊNH ĐẦY ĐỦ</h2>
+            }
+        }
+        <br />
+
+    </div>
+</CENTER>
+
+<h2> Tất cả quy trình sản xuất sản phẩm </h2>
+
+<br />
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.SanPham.TenSanPham)*@
+            STT
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TenQuyTrinh)*@
+            Tên quy trình
+        </th>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.LoHang.TenLoHang)*@
+            Tên lô hàng
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.ChuKi)
+        </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.NgayKy)*@
+            Ngày SX lô hàng
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TepTinChungThuc)*@
+            Tệp tin
+        </th>
+        <th>
+            Cơ quan kiểm định
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TrangThai)*@
+            Trạng thái
+        </th>
+
+        @*<th></th>*@
+    </tr>
+    @{var i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+
+            <td>
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenQuyTrinh)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.LoHang.TenLoHang)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ChuKi)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.LoHang.NgaySanXuat)
+            </td>
+            <td>
+                <img src=@item.TepTinChungThuc class="img-responsive" alt="" width="400" height="400" />
+            </td>
+            <td>
+                <h4 style="color:red"> @Html.DisplayFor(modelItem => item.NguoiDung.MoTa)</h4>
+            </td>
+            <td>
+                @{
+                    if (item.TrangThaiXacThuc == 0)
+                    {
+                        <div style="color:red"> Chưa xác thực</div>
+                    }
+                    else if (item.TrangThaiXacThuc == 1)
+                    {
+                        <div style="color:slateblue">Đã xác thực</div>
+
+                    }
+                }
+            </td>
+
+            @*<td>
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaQuyTrinh }, new { @style = "color:white;" })
+                </button>
+            </td>*@
+
+        </tr>
+
+
+    }
+</table>

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Blockchain_MocChauMilk.Models.QuyTrinh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutCoquan.cshtml";
+    var userAdmin = Session["userAdmin"] as Blockchain_MocChauMilk.Models.NguoiDung;
+
+}
+<br />
+
+<h2> Tất cả quy trình</h2>
+
+<br />
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.SanPham.TenSanPham)*@
+            Tên sản phẩm
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TenQuyTrinh)*@
+            Tên quy trình
+        </th>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.LoHang.TenLoHang)*@
+            Tên lô hàng
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.NguoiDung.TaiKhoan)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.ChuKi)
+            </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.NgayKy)*@
+            Ngày SX lô hàng
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TepTinChungThuc)*@
+            Tệp tin
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TrangThai)*@
+            Trạng thái
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.MaNguoiDung == userAdmin.MaNguoiDung)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenQuyTrinh)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoHang.TenLoHang)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.NguoiDung.VaiTro.VaiTro1)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.MoTa)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ChuKi)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoHang.NgaySanXuat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TepTinChungThuc)
+                </td>
+                <td>
+                    @{
+                        if (item.TrangThai == 0)
+                        {
+                            <div style="color:red">Đang chờ ký</div>
+                        }
+                        else if (item.TrangThai == 1)
+                        {
+                            <div style="color:slateblue">Đã ký</div>
+
+                        }
+                        else if (item.TrangThai == 2)
+                        {
+                            <div style="color:sandybrown">Thông tin quy trình bị thay đổi</div>
+                        }
+                    }
+                </td>
+
+                <td>
+                    <button class="btn btn-primary">
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaQuyTrinh }, new { @style = "color:white;" })
+                    </button>
+                </td>
+
+            </tr>
+
+        }
+    }
+</table>

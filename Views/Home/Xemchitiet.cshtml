@@ -1,0 +1,20 @@
+﻿@using Blockchain_MocChauMilk.Models
+@model SanPham
+@{
+    ViewBag.Title = "Xemchitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <CENTER>
+        <div>
+            <h2>CHI TIẾT SẢN PHẨM</h2>
+            <img src=@Model.HinhAnh class="img-responsive" alt="" width="400" height="400" />
+            <br />
+            <h3> @Model.TenSanPham</h3>
+            <br />
+            @Model.MoTa
+            <br />
+
+        </div>
+    </CENTER>
+

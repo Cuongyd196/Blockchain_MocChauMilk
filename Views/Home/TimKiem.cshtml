@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<h2>Tìm kiếm sản phẩm</h2>
+<div style="min-height:500px">
+    @*<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Tên sản phẩm" aria-label="Search">
+            <button class="btn btn-success" type="submit">Tìm kiếm</button>
+        </form>*@
+    <!-- Đoạn cần thêm -->
+    @using (Html.BeginForm("TimKiem", "Home", FormMethod.Get)) // -- phần thay đổi
+    {
+        <p>
+            @Html.TextBox("searchString") <input type="submit" value="Tìm kiếm" />
+        </p>
+    }
+    <hr /> <div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-sm-6 border">
+            <center>
+                <a href="@Url.Action("xemchitiet", new {@MaSanPham=item.MaSanPham })">
+                    <img src=@item.HinhAnh class="img-responsive" alt="" width="400" height="400" />
+                </a>
+                <h3>@item.TenSanPham</h3>
+                <br />
+                <a class="btn btn-success" href="@Url.Action("XemChiTietSP", new {id = item.MaSanPham })">Xem chi tiết</a>
+            </center>
+        </div>
+
+    }
+</div>
+    </div>
+   
+
+
+

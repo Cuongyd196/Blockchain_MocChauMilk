@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Blockchain_MocChauMilk.Models.VaiTro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<br />
+
+<h2>Quản lý vai trò</h2>
+
+<p>
+    <button class="btn-info"> @Html.ActionLink("Thêm mới", "Create", new { }, new { @style = "color:white;" }) </button>
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VaiTro1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTinKhoa)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VaiTro1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThongTinKhoa)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaVaitro }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaVaitro }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaVaitro })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,54 @@
+﻿@model Blockchain_MocChauMilk.Models.QuyTrinh
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutCoquan.cshtml";
+}
+<br />
+
+<center><h2>Xác thực quy trình</h2></center>
+
+@using (Html.BeginForm("KiemDinhQuyTrinh", "KiemDinhs", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <center>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaQuyTrinh,"Xác thực cho quy trình", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaQuyTrinh, new { htmlAttributes = new { @class = "form-control", @readonly= "true" } })
+                    @Html.ValidationMessageFor(model => model.MaQuyTrinh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="TrangThai">Nhập khóa bí mật</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" data-val="true" data-val-number="The field Trạng thái must be a number." id="khoabimat" name="khoabimat" type="number" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Xác thực ngay" class="btn btn-danger" />
+                </div>
+
+            </div>
+            <h4>
+                <span style="color:red">
+                    @ViewBag.ThongBao
+                </span>
+                <br />
+            </h4>
+            @*<h5>
+                <span>
+                    @ViewBag.Tb
+                    <br />
+                    @ViewBag.Chuki
+                </span>
+            </h5>*@
+        </div>
+    </center>
+}

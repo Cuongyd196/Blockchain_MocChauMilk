@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand"><img src="~/Content/images/logo.jpg" width="130" height="70"/></a>
+        <a class="navbar-brand"><img src="~/Content/images/logo.jpg" width="130" height="70" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,13 +17,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a style ="color:white"class="nav-link" href="#"> Trang chủ<span class="sr-only">(current)</span></a>
+                    <a style="color:white" class="nav-link" href="@Url.Action("Index", "Home")"> Trang chủ<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a style ="color:white" class="nav-link" href="#"> Sản phẩm</a>
+                    <a style="color:white" class="nav-link" href="@Url.Action("TimKiem", "Home")">Tìm kiếm Sản phẩm</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a style ="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Menu
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -35,22 +35,47 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a style ="color:white" class="nav-link" href="#">Thông tin</a>
+                    <a style="color:white" class="nav-link" href="#">Thông tin</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color:white" class="nav-link" href="@Url.Action("Dangnhap", "Admin/HomeAdmin")">Trang quản lý</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+            @*<form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Tên sản phẩm" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0 text-white" type="submit">Tìm kiếm</button>
-            </form>
+            </form>*@
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Thiết kế By CườngIT</p>
-        </footer>
     </div>
+    <hr />
+    <footer class="bg-light">
+        <div class="row">
+            <div class="col-md-12 col-sm-6">
+                <CENTER>
+                    <div style="align-content:center">
+                        <h3>TRANG CHỦ SỮA MỘC CHÂU</h3>
+                        <br />
+
+                        Thiết kế bởi : Cường IT
+                        <br />
+                        Số 01/21 Lương Định Của- Trường Thi - Thanh Hóa
+                        ĐT: 0812883636
+                        <br />
+                        Email: Cuongyd196@gmail.com
+                        <br />
+                        Hỗ trợ CNTT
+                        Website được vận hành trên Microsoft Azure
+                    </div>
+                </CENTER>
+            </div>
+        </div>
+        <hr />
+        <center> <p class="bg-primary" style="color:white">&copy; @DateTime.Now.Year - CườngIT</p></center>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

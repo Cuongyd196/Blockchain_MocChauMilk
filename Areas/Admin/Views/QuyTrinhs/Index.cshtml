@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Blockchain_MocChauMilk.Models.QuyTrinh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<h2>Quản lý quy trình</h2>
+
+<p>
+    <button class="btn-info"> @Html.ActionLink("Thêm mới", "Create", new { }, new { @style = "color:white;" }) </button>
+
+    @using (Html.BeginForm("Index", "QuyTrinhs", FormMethod.Get)) // -- phần thay đổi
+    {
+
+        @Html.TextBox("searchString") <input type="submit" value="Tìm kiếm" placeholder="Từ khóa..." />
+
+    }
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.SanPham.TenSanPham)*@
+            Tên sản phẩm
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TenQuyTrinh)*@
+            Tên quy trình
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.LoHang.TenLoHang)*@
+            Tên lô hàng
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.ChuKi)
+        </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.NgayKy)*@
+            Ngày SX lô hàng
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TepTinChungThuc)*@
+            Tệp tin
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.NguoiDung.TaiKhoan)*@
+            Cơ quan xác thực
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TrangThai)*@
+            Trạng thái
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenQuyTrinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoHang.TenLoHang)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ChuKi)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.LoHang.NgaySanXuat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TepTinChungThuc)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => item.NguoiDung.MoTa)
+            </td>
+            <td>
+                @{
+                    if (item.TrangThai == 0)
+                    {
+                        <div style="color:red">Đang chờ kiểm định</div>
+                    }
+                    else if (item.TrangThai == 1)
+                    {
+                        <div style="color:slateblue">Đã kiểm định</div>
+
+                    }
+                    else if (item.TrangThai == 2)
+                    {
+                        <div style="color:sandybrown">Thông tin quy trình bị thay đổi</div>
+                    }
+                }
+            </td>
+
+            <td>
+                <button class="btn btn-success">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaQuyTrinh }, new { @style = "color:white;" })
+                </button>
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaQuyTrinh }, new { @style = "color:white;" })
+                </button>
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaQuyTrinh }, new { @style = "color:white;" })
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,21 @@
+﻿<h3><div class="">
+     Sản phẩm 
+    <img src="~/Content/images/iconnew.gif" width="40" height="40">
+</div></h3>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-sm-6 border">
+            <center>
+
+                <a href="@Url.Action("xemchitiet", new {@MaSanPham=item.MaSanPham })">
+                    <img src=@item.HinhAnh class="img-responsive" alt="" width="400" height="400" />
+                </a>
+                <h3>@item.TenSanPham</h3>
+                <br />
+                <a class="btn btn-success" href="@Url.Action("XemChiTietSP", new {id = item.MaSanPham })">Xem chi tiết</a>
+            </center>
+        </div>
+    }
+</div>
+

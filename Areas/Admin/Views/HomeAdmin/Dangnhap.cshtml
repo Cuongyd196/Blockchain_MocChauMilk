@@ -1,0 +1,67 @@
+﻿@model Blockchain_MocChauMilk.Models.NguoiDung
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/layoutAdmin/css/styles.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Dangnhap</title>
+</head>
+<body style="background-image: url(../../../../Content/images/bg1.jpg)">
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top:50px">
+            <div class="col-lg-6" style="opacity:0.9">
+                <div class="card shadow-lg border-0 rounded-lg mt-5" >
+                    <div class="card-header"><h3 class="text-center font-weight my-4" style="color:red" >HỆ THỐNG QUẢN LÝ QUY TRÌNH SẢN XUẤT SỮA TƯƠI MỘC CHÂU</h3></div>
+                    <div class="card-body">
+
+                        @using (Html.BeginForm("Dangnhap", "HomeAdmin", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputEmailAddress">Tài khoản</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control py-4", placeholder = "Nhập tài khoản" } })
+                                    @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputEmailAddress">Mật khẩu</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control py-4", placeholder = "Nhập Mật khẩu", @type = "password" } })
+                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Lưu mật khẩu</label></div>
+                            </div>
+                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="password.html">Quên mật khẩu?</a>
+                            <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+                            </div>
+                        </div>
+                        }
+                        <div style="color:red">
+                            @ViewBag.Fail
+                        </div>
+                    @*<div>
+                        <a class="nav-link" href="@Url.Action("Index", "HoiDaps")"> Trang chủ</a>
+                    </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/layoutAdmin/js/scripts.js"></script>
+
+</body>
+</html>
