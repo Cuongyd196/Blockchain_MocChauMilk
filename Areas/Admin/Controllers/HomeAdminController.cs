@@ -21,7 +21,7 @@ namespace Blockchain_MocChauMilk.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Dangnhap()
         {
-            return View();
+            return View(new NguoiDung());
         }
         [HttpPost]
         public ActionResult Dangnhap(FormCollection Dangnhap)
@@ -52,7 +52,7 @@ namespace Blockchain_MocChauMilk.Areas.Admin.Controllers
                 Session["userAdmin"] = islogin;
                 return RedirectToAction("Index","QuyTrinhs");
             }else
-            return View();
+            return View(new NguoiDung());
         }
         public ActionResult DangXuat()
         {

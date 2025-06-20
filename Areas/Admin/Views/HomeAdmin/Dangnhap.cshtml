@@ -26,29 +26,26 @@
 
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label class="small mb-1">Tài khoản</label>
+                                    <div class="col-md-12">
+                                        <input class="form-control py-4 text-box single-line" data-val="true" data-val-length-max="30" id="TaiKhoan" name="TaiKhoan" placeholder="Nhập tài khoản" type="text" value="">
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                <label class="small mb-1" for="inputEmailAddress">Tài khoản</label>
-                                <div class="col-md-12">
-                                    @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control py-4", placeholder = "Nhập tài khoản" } })
-                                    @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label class="small mb-1">Mật khẩu</label>
+                                    <div class="col-md-12">
+                                        <input class="form-control py-4 text-box single-line" data-val="true" data-val-length-max="20" id="MatKhau" name="MatKhau" placeholder="Nhập Mật khẩu" type="password" value="">                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Lưu mật khẩu</label></div>
+                                </div>
+                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <a class="small" href="password.html">Quên mật khẩu?</a>
+                                    <input type="submit" value="Đăng nhập" class="btn btn-primary" />
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="small mb-1" for="inputEmailAddress">Mật khẩu</label>
-                                <div class="col-md-12">
-                                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control py-4", placeholder = "Nhập Mật khẩu", @type = "password" } })
-                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Lưu mật khẩu</label></div>
-                            </div>
-                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="password.html">Quên mật khẩu?</a>
-                            <input type="submit" value="Đăng nhập" class="btn btn-primary" />
-                            </div>
-                        </div>
                         }
                         <div style="color:red">
                             @ViewBag.Fail

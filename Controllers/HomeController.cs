@@ -54,7 +54,8 @@ namespace Blockchain_MocChauMilk.Controllers
                 BigInteger e = BigInteger.Parse(nd.SoE);
                 BigInteger n = BigInteger.Parse(nd.SoN);
                 String ktchuki = MaHoaRSA.RSA_MaHoa(qt.ChuKi, e, n);
-                String pathFile = "D:/DotNet/Blockchain_MocChauMilk/" + qt.TepTinChungThuc.ToString();
+                string relativePath = qt.TepTinChungThuc.ToString();
+                string pathFile = Server.MapPath("~" + relativePath);
                 FileStream fs = System.IO.File.OpenRead(pathFile);
                 byte[] by = mySHA256.ComputeHash(fs);
                 for (int i = 0; i < by.Length; i++)
@@ -87,7 +88,8 @@ namespace Blockchain_MocChauMilk.Controllers
             }
             ViewBag.TrangthaiSP = sanPham.TrangThai;
             ViewBag.TenSP = sanPham.TenSanPham;
-            ViewBag.AnhSP = sanPham.HinhAnh;
+            string relativePathHinhAnh = sanPham.HinhAnh; // ví dụ: "/Images/files/abc.jpg"
+            ViewBag.AnhSP = Url.Content("~" + relativePathHinhAnh);
             return View(quyTrinh);
         }
 

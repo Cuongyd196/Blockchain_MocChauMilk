@@ -33,9 +33,15 @@
                 @Html.DisplayFor(modelItem => item.ThongTinKhoa)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaVaitro }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MaVaitro }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaVaitro })
+                <button class="btn btn-success">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaVaitro }, new { @style = "color:white;" })
+                </button>
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaVaitro }, new { @style = "color:white;" })
+                </button>
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaVaitro }, new { @style = "color:white;" })
+                </button>
             </td>
         </tr>
     }

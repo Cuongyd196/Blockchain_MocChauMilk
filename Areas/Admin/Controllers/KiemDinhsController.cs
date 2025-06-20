@@ -166,17 +166,24 @@ namespace Blockchain_MocChauMilk.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult KiemDinhQuyTrinh(FormCollection quytrinhKiemDinh)
         {
+
             String hash = "";
             SHA256 mySHA256 = SHA256.Create();
             String maQT = quytrinhKiemDinh["MaQuyTrinh"].ToString();
             String khoabimat = quytrinhKiemDinh["khoabimat"].ToString();
+            if (khoabimat == null || khoabimat.Trim().Equals(""))
+            {
+                ViewBag.ThongBao = "Chưa nhập khoá";
+                return View("Edit");
+            }
             QuyTrinh qt = db.QuyTrinhs.Find(int.Parse(maQT));
             int maND = (int)qt.MaNguoiDung;
             NguoiDung ND = db.NguoiDungs.Find(maND);
             String soN = ND.SoN;
             BigInteger n = BigInteger.Parse(soN);
             BigInteger sk = BigInteger.Parse(khoabimat);
-            String pathFile = "D:/DotNet/Blockchain_MocChauMilk/" + qt.TepTinChungThuc.ToString();
+            string relativePath = qt.TepTinChungThuc.ToString();
+            string pathFile = Server.MapPath("~" + relativePath);            
             FileStream fs= System.IO.File.OpenRead(pathFile);
             byte[] by = mySHA256.ComputeHash(fs);
             for (int i = 0; i < by.Length; i++)
@@ -187,7 +194,7 @@ namespace Blockchain_MocChauMilk.Areas.Admin.Controllers
             qt.ChuKi = sig;
             if (qt.ChuKi == null || qt.ChuKi.Trim().Equals(""))
             {
-                ViewBag.ThongBao = "Ký lỗi chữ ký rỗng";
+                ViewBag.ThongBao = "Ký lỗi chữ ký lỗi";
                 return View("Edit");
             }
             else
